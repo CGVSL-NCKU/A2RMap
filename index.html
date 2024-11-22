@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Importance Map for Media Retargeting</title>
+<body style="background-color:#17202A  ; color: #FDFEFE">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1 {font-family: "Raleway", Arial, sans-serif}
+h1 {letter-spacing: 6px}
+.w3-row-padding img {margin-bottom: 12px}
+</style>
+</head>
+<body>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-opacity" style="padding:28px 16px">  
+  <br>
+  <h1 style="color:coral; font-weight: bold;"> Deep learning-based Importance Map for Content-Aware Media Retargeting </h1>  
+  <h4 style="color:cyan">Thi-Ngoc-Hanh Le<sup> 1</sup>, Tong-Yee Lee<sup> 1</sup>, Senior Member, IEEE, Shih-Syun Lin<sup> 2</sup>, Weiming Dong<sup> 3</sup>, Senior Member, IEEE </h4>
+  <h5><sup>(1) </sup>National Cheng-Kung University, Taiwan; <sup>(2) </sup>National Taiwan Ocean University, Taiwan;  <sup>(3) </sup>Institute of Automation, CAS, China</h5> <br>
+
+  <h4>This work has been accepted for publication on Journal of Multimedia Tools and Applications (MTAP), January 20, 2024</h4>
+
+  <div class="w3-padding-32"> 
+    <div class="w3-bar w3-border">
+      <a href="index.html" class="w3-bar-item w3-button w3-light-grey">Home</a>              
+      <a href="#id_sc" class="w3-bar-item w3-button"> Seam carving</a> 
+      <a href="#id_w" class="w3-bar-item w3-button"> Warping</a> 
+      <a href="#vids" class="w3-bar-item w3-button"> Video Retargeting </a>     
+                         	    
+    </div>
+   </div>
+</header>
+
+<table align='center'; width=1200px;> 		 	
+					 <tbody><tr>				    
+  					<td width="1200px">  	
+              <center>                
+                  <img src="./data/teaser.png" width="1200px">
+                </center>                              										
+            </td>          
+          </tr>
+        </table>
+        <table align='center'; width=900px;> 
+          <tr>
+            <td width="600px">
+              <center><h2 style="color:burlywood">Abstract</h2></center>
+              <hr> 
+                <p align='justify',style='font-size:20; font-weight: bold'>	 We present a deep learning-based framework to generate the importance map adaptable to the existing image and video retargeting operators. 
+                  A conventional retargeting algorithm uses a heuristic way to seek an off-the-self approach that is not originally designed for retargeting applications 
+                  that could be integrated into their retargeting system. The extracted importance map of the image does not match the characteristics of the input image; 
+                  therefore, it affects the retargeting results and limits the performance of the retargeting method. Our designed framework attempts 
+                  to minimize the artifacts/distortions caused by inappropriate energy, e.g., the shrunk phenomenon in warping-based results and carving-through-object distortion 
+                  in the seam carving-based approach. Our proposed framework focuses on capturing sensitive-to-distortion regions and activating their energy to solve this challenge. 
+                  We verify the effectiveness of our proposed scheme by plugging it into three typical retargeting methods: seam carving-based, warping-based for image, and video retargeting. 
+                  Besides, we test it on various challenging and low retargetability input images, compare it with prior works and evaluate it on a benchmark dataset. 
+                  The experimental results and evaluation demonstrate that our importance map substantially outperforms the previous works in terms of visual quality.
+                <hr>
+          <p align='justify';style='font-size:16.0pt; font-weight: bold'> Keywords -- retargeting, imaportance map, seam carving, warping, A2R-Map
+              <br>	 	  		           
+          	<hr>
+          
+		  				</tr>
+   
+			  </tbody></table>      
+
+        
+         <!-- ------------------------------------------------------------- Evaluation result -------------------------------------------->
+         <table align='center'; width=1500px; style="color:burlywood">
+          <tbody>
+            <tr>
+              <td width = "300px">
+              </td>
+              <td align="center" width = "800px">                
+              <h2><a id="id_sc">Seam carving - based Image Retargeting Results</a></h2>                                      
+              </td>
+              <td width = "300px">
+              </td>              
+            </tr>           
+          </table>
+      
+          
+          <table align='center'; width=1300px>
+            <tbody>
+              <tr>
+                
+                <td align="center" width = "1300px">                
+                  <h4>In this session, we plug our A2R-Map to seam carving operator and compare the retargeting results against the use of the Gradient map. </a></h4>     <br>
+                  <h4>All results in this session are reduced to 75% of the original width.</h4>                                   
+                </td>                   
+                           
+              </tr>           
+            </table>
+            <hr>
+          <table align='center'; width=1300px>  
+            <tr>
+              <td width="500px">
+                <center>
+                  <h4>Input image </h4>
+                </center>    
+              </td>	    
+              
+              <td width = "20px">
+              </td>
+
+              <td width="350px">
+                <center>
+                  <h4>SC + Gradient map </h4>
+                </center>    
+              </td>	    
+              
+              <td width = "20px">
+              </td>
+             
+              <td width="350px">
+                <center>
+                  <h4>SC + Our A2R-Map </h4>
+                </center>    
+              </td>	   
+            </tr>
+            <tr>
+              <td width="500px">
+                <center>
+                  <img src="./data/3.jpg" >
+                </center>    
+              </td>	    
+              
+              <td width = "20px">
+              </td>
+
+              <td width="350px">
+                <center>
+                  <img src="./data/3_sc.png">
+                </center>    
+              </td>	    
+              
+              <td width = "20px">
+              </td>
+             
+              <td width="350px">
+                <center>
+                  <img src="./data/3_A2R.png">
+                </center>    
+              </td>	   
+            </tr>
+
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/102.jpg" >
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/102_sc.png">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/102_A2R.png">
+                  </center>    
+                </td>	   
+              </tr>
+            
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/104.jpg" >
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/104_sc.png">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/104_A2R.jpg" >
+                  </center>    
+                </td>	   
+              </tr>
+
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/174.jpg" >
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/174_sc.png" >
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/174_A2R.png" >
+                  </center>    
+                </td>	   
+              </tr>
+                           
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/63.jpg" >
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/63_sc.png">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/63_A2R.png" >
+                  </center>    
+                </td>	   
+              </tr>  
+
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/189.jpg" >
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/189_sc.png">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/189_A2R.png">
+                  </center>    
+                </td>	   
+              </tr>  
+
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/297.jpg">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/297_sc.png" >
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/297_A2R.png">
+                  </center>    
+                </td>	   
+              </tr>  
+
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/169.jpg">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/169_sc.png">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/169_A2R.png">
+                  </center>    
+                </td>	   
+              </tr> 
+
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/288.jpg">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/288_sc.png">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/288_A2R.png">
+                  </center>    
+                </td>	   
+              </tr>  
+
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/134.jpg">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/134_sc.png">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/134_A2R.png">
+                  </center>    
+                </td>	   
+              </tr>  
+
+              <tr>
+                <td width="500px">
+                  <center>
+                    <img src="./data/132.jpg">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+  
+                <td width="350px">
+                  <center>
+                    <img src="./data/132_sc.png">
+                  </center>    
+                </td>	    
+                
+                <td width = "20px">
+                </td>
+               
+                <td width="350px">
+                  <center>
+                    <img src="./data/132_A2R.png">
+                  </center>    
+                </td>	   
+              </tr>  
+
+      </table>
+      <hr>
+
+      <table align='center'; width=1200px; style="color:burlywood">
+        <tbody>
+          <tr>
+            <td width = "100px">
+            </td>
+            <td align="center" width = "1200px">                
+              <h2><a id="id_w">Warping-based Image Retargeting Results</a></h2>                                
+            </td>
+            <td width = "100px">
+            </td>              
+          </tr>           
+        </table>
+        <table align='center'; width=1300px>
+          <tbody>
+            <tr>              
+              <td align="center" width = "1300px">                
+                <h4>In this session, we intergrate our A2R-Map with warping operators, then let our A2R-Map compete with Saliency map in this manner. </h4>    <br>
+                <h4>All results in this session are reduced to 50% of the original width. </h4>
+                <hr>                                    
+              </td>                                              
+            </tr>           
+          </table>
+    
+      <table align='center'; width=1200px>     
+        <tr>
+          <td width="550px">
+            <center>
+              <h4>Input image</h4>
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <h4>Warp + Saliency map</h4>
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+          
+          <td width="300px">
+            <center>
+             <h4>Warp + A2R-Map</h4>
+            </center>    
+          </td>	   
+        </tr>              
+        <tr>
+          <td width="550px">
+            <center>
+              <img src="./data/w4.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <img src="./data/w4_sal.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+          
+          <td width="300px">
+            <center>
+              <img src="./data/w4_A2R.jpg" >
+            </center>    
+          </td>	   
+        </tr>
+
+        <tr>
+          <td width="550px">
+            <center>
+              <img src="./data/w5.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <img src="./data/w5_sal.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+         
+          <td width="300px">
+            <center>
+              <img src="./data/w5_A2R.jpg" >
+            </center>    
+          </td>	   
+        </tr>
+
+        <tr>
+          <td width="550px">
+            <center>
+              <img src="./data/w3.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <img src="./data/w3_sal.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+         
+          <td width="300px">
+            <center>
+              <img src="./data/w3_A2R.jpg" >
+            </center>    
+          </td>	   
+        </tr>
+
+        <tr>
+          <td width="550px">
+            <center>
+              <img src="./data/w1.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <img src="./data/w1_sal.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+         
+          <td width="300px">
+            <center>
+              <img src="./data/w1_A2R.jpg" >
+            </center>    
+          </td>	   
+        </tr>
+
+        <tr>
+          <td width="550px">
+            <center>
+              <img src="./data/w2.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <img src="./data/w2_sal.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+         
+          <td width="300px">
+            <center>
+              <img src="./data/w2_A2R.jpg" >
+            </center>    
+          </td>	   
+        </tr>
+
+        <tr>
+          <td width="550px">
+            <center>
+              <img src="./data/w7.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <img src="./data/w7_sal.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+         
+          <td width="300px">
+            <center>
+              <img src="./data/w7_A2R.jpg" >
+            </center>    
+          </td>	   
+        </tr>
+        <tr>
+          <td width="550px">
+            <center>
+              <img src="./data/w6.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <img src="./data/w6_sal.jpg" >
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+         
+          <td width="300px">
+            <center>
+              <img src="./data/w6_A2R.jpg" >
+            </center>    
+          </td>	   
+        </tr>
+        
+    </table>
+    <hr>
+
+      <table align='center'; width=1200px; style="color:burlywood">
+        <tbody>
+          <tr>
+            <td width = "100px">
+            </td>
+            <td align="center" width = "1200px">                
+              <h2><a id="vids">Warping-based Video Retargeting Results</a></h2>                    
+            </td>
+            <td width = "100px">
+            </td>              
+          </tr>           
+        </table>
+        <table align='center'; width=1300px>
+          <tbody>
+            <tr>
+              <td width = "350px">
+              </td>
+              <td align="center" width = "1100px">                
+                <h4>In the below video, we highlight the effectiveness of our A2R-Map against the saliency map in Video Retargeting application. </h4>                                        
+              </td>                   
+              <td width = "350px">
+              </td>              
+            </tr>           
+          </table>
+      
+      
+      <table align='center'; width=1500px>
+        
+        <tr>
+          <td width="1300px">
+            <center>              
+              <video autoplay controls muted loop
+                src="./data/vids/compare_videos.mp4"	
+                width="1300px">
+              </video> <br>              
+              </center>    
+          </td>	            
+        </tr>
+        <td align="center" width = "1100px">                
+          <h4>Each row below is the case by case of the video results. All the results in this session are reduced to 50% of the original width.</h4>                                        
+        </td>  
+      </table>
+      
+
+      <table align='center'; width = "1500px">   
+        <tr>
+          <td width="550px">
+            <center>
+              <h4>Input video</h4>
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+
+          <td width="300px">
+            <center>
+              <h4>Warp + Saliency map</h4>
+            </center>    
+          </td>	    
+          
+          <td width = "20px">
+          </td>
+         
+          <td width="300px">
+            <center>
+              <h4>Warp + A2R-Map</h4>
+            </center>    
+          </td>	   
+        </tr>
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data//vids/source-cut-10.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/source_cut_10-m.mp4"	
+                  width="350px">
+                </video> <br>
+              
+                </center>    
+          </td>
+          
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/SourceCut10-d.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>            
+        </tr>	     
+
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data//vids/07.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/07-m.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/07-d.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>            
+        </tr>	     
+
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data//vids/source46.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/Lin_source46.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/source46-d.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>            
+        </tr>	 
+        
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data//vids/source32.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/Lin_source32.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/source32-d.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>            
+        </tr>	  
+
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data//vids/source52.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/Lin_source52.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/source52-d.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>            
+        </tr>	  
+
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data//vids/source-cut-418.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/RV_source-cut-418_sal.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          
+
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/RV_source-cut-418_A2R.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>            
+        </tr>	
+
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data//vids/Cap_No7_5.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/RV_Cap_No7_5_sal.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data//vids/RV_Cap_No7_5_A2R.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+        </tr>	
+
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data//vids/Heart of Te Fiti scene_3.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data/vids/RV_Heart of Te Fiti scene_3_sal.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data/vids/RV_Heart of Te Fiti scene_3_A2R.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+        </tr>	
+
+        
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data/vids/Heart of Te Fiti scene_4.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data/vids/RV_Heart of Te Fiti scene_4_sal.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data/vids/RV_Heart of Te Fiti scene_4_A2R.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+        </tr>	
+
+        <tr>
+          <td width="700px">
+            <center>
+              <video autoplay controls muted loop
+                src="./data/vids/Wheels-On-The-Bus_2.mp4"	
+                width="700px">
+              </video> <br>
+              
+              </center>    
+          </td>	    
+        
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data/vids/RV_Wheels-On-The-Bus_2_sal.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+          <td width = "20px">
+          </td>
+          
+          <td width="350px">
+              <center>
+                <video autoplay controls muted loop
+                  src="./data/vids/RV_Wheels-On-The-Bus_2_A2R.mp4"	
+                  width="350px">
+                </video> <br>
+                
+                </center>    
+          </td>
+        </tr>	
+
+      </table>       
+      <hr>   
+    <hr>
+    
+      <center>        
+        <a href="index.html"> <h3 style="color:burlywood">Back to homepage</h3></a> 
+      </center>
+    
+          
+<footer> 
+  <center>
+    <p>Designed by Le</p>
+  </center>
+  
+</footer>
+
+</body>
+</html>
